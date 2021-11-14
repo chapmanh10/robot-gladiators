@@ -149,6 +149,19 @@ var endGame = function () {
     window.alert("You've lost your robot in battle.")
   }
 
+  var currentHighScore = localStorage.getItem("score");
+  if (currentHighScore === null) {
+    currentHighScore = 0;
+  }
+  if (currentHighScore > playerInfo.money) {
+    window.alert("You did not beat the high score!")
+  }
+  else {
+    localStorage.setItem("score", playerInfo.money);
+    localStorage.setItem("winnerName",playerInfo.name);
+    window.alert("You beat the high score!"); 
+  }
+
   var playAgainConfirm = window.confirm("Would you like to play again?");
 
   if (playAgainConfirm) {
